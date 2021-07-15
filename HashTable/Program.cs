@@ -57,6 +57,32 @@ namespace HashTable
                 myMapNode.Display(i);
             }
 
+            MyMapNode<string, int> mapNode = new MyMapNode<string, int>(10);
+            string[] phrase;
+            string inputPhrase = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+            phrase = inputPhrase.Split(' ');
+
+            int number = 1;
+            foreach(string i in phrase)
+            {
+                num = mapNode.Check(i);
+                if(number > 1)
+                {
+                    mapNode.Add(i, num);
+                }
+                else
+                {
+                    mapNode.Add(i, 1);
+                }
+            }
+
+            IEnumerable<string> unique = phrase.Distinct<string>();
+            string delWord = Console.ReadLine();
+            mapNode.Remove(delWord);
+            foreach(var i in unique)
+            {
+                mapNode.Display(i);
+            }
         }
     }
 }
