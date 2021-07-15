@@ -33,7 +33,29 @@ namespace HashTable
                 hash.Display(i);
             }
            
+            MyMapNode<string , int> myMapNode = new MyMapNode<string, int>(10);
+            string[] paragraph;
+            string input = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+            paragraph = input.Split(' ');
 
+            int num = 1;
+            foreach(string i in paragraph)
+            {
+                num = myMapNode.Check(i);
+                if(num > 1)
+                {
+                    myMapNode.Add(i, num);
+                }
+                else
+                {
+                    myMapNode.Add(i, 1);
+                }
+            }
+            IEnumerable<string> dist = paragraph.Distinct<string>();
+            foreach(var i in dist)
+            {
+                myMapNode.Display(i);
+            }
 
         }
     }
